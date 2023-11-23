@@ -1,24 +1,15 @@
 <script setup>
 import { useProduct } from "./composables";
-import { onMounted, ref } from "vue";
 
-const { products, limitSize, onLimitChange, category, categorySize } =
-  useProduct();
-
-const searchWord = ref("");
-const searchProduct = async () => {
-  if (searchWord.value) {
-    const res = await fetch(
-      `http://localhost:3000/products?q=${searchWord.value}`
-    );
-    const data = await res.json();
-    products.value = data;
-  }
-};
-
-onMounted(() => {
-  getAll();
-});
+const {
+  products,
+  limitSize,
+  onLimitChange,
+  category,
+  categorySize,
+  searchProduct,
+  searchWord,
+} = useProduct();
 </script>
 
 <template>
@@ -75,7 +66,6 @@ onMounted(() => {
       <option value="jewelery">Jewelery</option>
       <option value="electronics">Electronics</option>
     </select>
-    
   </div>
 
   <div class="container mt-6 flex">
