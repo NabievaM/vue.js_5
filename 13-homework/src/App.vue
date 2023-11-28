@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { onMounted, ref } from "vue";
 
 const products = ref(null);
@@ -9,10 +9,7 @@ async function getProducts() {
 onMounted(() => {
   getProducts();
 });
-</script>
-
+</script> -->
 <template>
-  <pre>{{ products }}</pre>
+  <router-view />
 </template>
-
-<style scoped></style>
