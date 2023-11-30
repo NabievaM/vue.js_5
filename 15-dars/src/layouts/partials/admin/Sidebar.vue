@@ -5,7 +5,7 @@
     <h2 class="text-center uppercase text-xl font-semibold mb-4 text-white">
       Admin Panel
     </h2>
-    <router-link to="/admin/main" class="sidebar_item">Main</router-link>
+    <router-link to="/admin/main" class="sidebar_item">Profile</router-link>
     <router-link to="/admin/users" class="sidebar_item">Users</router-link>
     <router-link to="/admin/admins" class="sidebar_item">Admins</router-link>
     <router-link to="/admin/products" class="sidebar_item"
