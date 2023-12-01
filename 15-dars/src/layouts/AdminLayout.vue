@@ -7,7 +7,7 @@ import Sidebar from "@/layouts/partials/admin/Sidebar.vue";
     <div class="w-1/5 sticky h-screen top-0 left-0">
       <Sidebar />
     </div>
-    <div class="w-4/5 px-4 py-6">
+    <div class="w-full px-4 py-6">
       <RouterView />
     </div>
   </main>
