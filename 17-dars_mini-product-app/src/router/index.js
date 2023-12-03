@@ -9,6 +9,8 @@ import {
   MT_ABOUT,
   RT_CART,
   MT_CART,
+  MT_NOTFOUND,
+  RT_NOTFOUND
 } from "../constants/routeNames";
 
 import Home from "../pages/Home.vue";
@@ -43,6 +45,14 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
         title: MT_CART,
+      },
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: RT_NOTFOUND,
+      component: () => import("../pages/404.vue"),
+      meta: {
+        title: MT_NOTFOUND,
       },
     },
     {

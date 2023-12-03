@@ -10,6 +10,8 @@ const MT_ABOUT = "About";
 const RT_CART = "cart";
 const MT_CART = "Cart";
 
+const RT_NOTFOUND = "not-found";
+const MT_NOTFOUND = "Not found";
 export {
   RT_HOME,
   MT_HOME,
@@ -19,4 +21,6 @@ export {
   MT_ABOUT,
   RT_CART,
   MT_CART,
+  RT_NOTFOUND,
+  MT_NOTFOUND
 };
