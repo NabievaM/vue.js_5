@@ -24,7 +24,6 @@ const router = createRouter({
             component: Home,
             meta: {
                 requiresAuth: true,
-                layout: "AppLayout",
                 title: MT_HOME,
             }
         },

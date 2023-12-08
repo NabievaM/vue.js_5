@@ -1,6 +1,4 @@
 import {
-    RT_ADMIN_MAIN,
-    MT_ADMIN_MAIN,
     RT_ADMIN_USERS,
     MT_ADMIN_USERS,
     RT_ADMIN_CATEGORY,
@@ -14,15 +12,6 @@ export const adminRoutes = {
     path: "/admin",
     component: () => import("../components/layouts/AdminLayout.vue"),
     children: [
-        // {
-        //     path: "main",
-        //     name: RT_ADMIN_MAIN,
-        //     component: () => import("../pages/admin/main.vue"),
-        //     meta: {
-        //         requiresAuth: true,
-        //         title: MT_ADMIN_MAIN
-        //     }
-        // },
         {
             path: "users",
             name: RT_ADMIN_USERS,

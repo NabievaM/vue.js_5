@@ -8,9 +8,12 @@ const url = import.meta.env.VITE_BASE_URL;
 const store = createStore({
     state: {
         admin: {},
+        authors: [],
     },
 
-    getters: {},
+    getters: {
+        authors: (state) => state.authors,
+    },
 
     actions: {
         async auth({ commit }, payload) {
@@ -22,18 +25,18 @@ const store = createStore({
             commit("SET_ADMIN", res.data);
         },
 
-        async user({ commit }, payload) {
-            const res = await axios.post(url + "/user/signin", payload);
-            if (!res.data?.access_token && res.status !== 200) {
+        async fetchAuthors({ commit }) {
+            const res = await axios.get(url + "/author/findAll");
+            if (!res.data?.author && res.status !== 200) {
                 return;
             }
-            commit("SET_TOKEN", res.data.access_token);
-        }
+            commit("SET_AUTHORS", res.data.authors);
+        },
     },
 
     mutations: {
         SET_TOKEN: (_, payload) => {
-            localStorage.setItem("access_token", payload)
+            localStorage.setItem("access_token", payload);
         },
 
         SET_ADMIN: (state, payload) => {
@@ -41,11 +44,15 @@ const store = createStore({
             router.push({ name: RT_HOME });
         },
 
+        SET_AUTHORS: (state, payload) => (state.authors = payload),
+
+
         LOGOUT: (state) => {
             state.admin = {};
             localStorage.removeItem("access_token");
             router.push({ name: RT_AUTH });
         },
-    }
-})
+    },
+});
+
 export default store;

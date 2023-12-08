@@ -1,5 +1,5 @@
 <template>
-  <component :is="route.meta.layoutComponent">
+  <component>
     <slot />
   </component>
 </template>

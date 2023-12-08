@@ -10,10 +10,9 @@ import { useStore } from "vuex";
 
 const store = useStore();
 
-// onMounted(async () => {
-//   await store.dispatch("fetchProducts");
-// });
-
+onMounted(async () => {
+  await store.dispatch("fetchAuthors");
+});
 </script>
 
 <style scoped></style>

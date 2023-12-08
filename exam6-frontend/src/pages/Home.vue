@@ -33,14 +33,17 @@
       <p class="text-gold text-3xl">Asosiy kategoriyalar</p>
     </div>
   </section>
+  <div v-for="author of authors">
+    <h1>{{ author.firstName }}</h1>
+  </div>
 </template>
 
 <script setup>
 import Navbar from "../components/navbar.vue";
 import Input from "../components/base/base-input.vue";
 
-// import { useProduct } from "../composables";
-// const { searchProduct, searchWord } = useProduct();
+import { useHome } from "../composables";
+const { authors } = useHome();
 </script>
 
 <style scoped></style>

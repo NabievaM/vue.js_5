@@ -1,18 +1,15 @@
-export function useProduct() {
-    const searchWord = ref("");
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
 
-    /*Search*/
-    const searchProduct = async () => {
-        if (searchWord.value) {
-            const res = await fetch(
-                /*url*/
-            );
-            const data = await res.json();
-            products.value = data;
-        }
-    };
+export function useHome() {
+    const store = useStore();
+    const authors = computed(() => store.getters.authors);
+
+    onMounted(async () => {
+        await store.dispatch("fetchAuthors")
+    });
 
     return {
-        searchWord, searchProduct
-    }
+        authors,
+    };
 }
