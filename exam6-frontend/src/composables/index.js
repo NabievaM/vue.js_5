@@ -3,13 +3,13 @@ import { useStore } from 'vuex';
 
 export function useHome() {
     const store = useStore();
-    const authors = computed(() => store.getters.authors);
+    const author = computed(() => store.getters.author);
 
     onMounted(async () => {
         await store.dispatch("fetchAuthors")
     });
 
     return {
-        authors,
+        author,
     };
 }

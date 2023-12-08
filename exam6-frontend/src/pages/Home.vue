@@ -7,6 +7,7 @@
         alt=""
       />
     </div>
+
     <div
       class="w-[1114px] h-[169px] rounded-xl bg-black2 absolute ml-[117px] p-[30px] text-center"
     >
@@ -32,18 +33,18 @@
     <div class="w-full h-screen mt-[250px] text-center">
       <p class="text-gold text-3xl">Asosiy kategoriyalar</p>
     </div>
-  </section>
-  <div v-for="author of authors">
-    <h1>{{ author.firstName }}</h1>
-  </div>
-</template>
 
+    <div v-for="shoir of author">
+      {{ shoir }}
+    </div>
+  </section>
+</template>
 <script setup>
 import Navbar from "../components/navbar.vue";
 import Input from "../components/base/base-input.vue";
 
 import { useHome } from "../composables";
-const { authors } = useHome();
+const { author } = useHome();
 </script>
 
 <style scoped></style>

@@ -8,11 +8,11 @@ const url = import.meta.env.VITE_BASE_URL;
 const store = createStore({
     state: {
         admin: {},
-        authors: [],
+        author: [],
     },
 
     getters: {
-        authors: (state) => state.authors,
+        author: (state) => state.author,
     },
 
     actions: {
@@ -28,9 +28,10 @@ const store = createStore({
         async fetchAuthors({ commit }) {
             const res = await axios.get(url + "/author/findAll");
             if (!res.data?.author && res.status !== 200) {
+                console.log(res.data.author);
                 return;
             }
-            commit("SET_AUTHORS", res.data.authors);
+            commit("SET_AUTHORS", res.data.author);
         },
     },
 
@@ -44,7 +45,7 @@ const store = createStore({
             router.push({ name: RT_HOME });
         },
 
-        SET_AUTHORS: (state, payload) => (state.authors = payload),
+        SET_AUTHORS: (state, payload) => (state.author = payload),
 
 
         LOGOUT: (state) => {
