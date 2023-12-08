@@ -38,6 +38,9 @@
 <script setup>
 import Navbar from "../components/navbar.vue";
 import Input from "../components/base/base-input.vue";
+
+// import { useProduct } from "../composables";
+// const { searchProduct, searchWord } = useProduct();
 </script>
 
 <style scoped></style>

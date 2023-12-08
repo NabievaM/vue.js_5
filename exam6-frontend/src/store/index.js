@@ -20,6 +20,14 @@ const store = createStore({
             }
             commit("SET_TOKEN", res.data.access_token);
             commit("SET_ADMIN", res.data);
+        },
+
+        async user({ commit }, payload) {
+            const res = await axios.post(url + "/user/signin", payload);
+            if (!res.data?.access_token && res.status !== 200) {
+                return;
+            }
+            commit("SET_TOKEN", res.data.access_token);
         }
     },
 

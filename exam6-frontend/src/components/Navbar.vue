@@ -7,7 +7,7 @@
     </div>
 
     <div class="flex gap-10 pt-[25px] ml-[400px]">
-      <p>Bosh sahifa</p>
+      <router-link to="/">Bosh sahifa</router-link>
       <p>Nasr</p>
       <p>Nazm</p>
       <p>Maqolalar</p>
