@@ -10,9 +10,14 @@
       <router-link to="/">Bosh sahifa</router-link>
       <p>Nasr</p>
       <p>Nazm</p>
-      <p>Maqolalar</p>
-      <p>Forum</p>
+      <!-- <p>Maqolalar</p>
+      <p>Forum</p> -->
       <router-link to="/admin">Admin Panel</router-link>
+      <Button
+        class="btn"
+        @click="logout"
+        >Chiqish</Button
+      >
     </div>
     <div class="pt-[15px]">
       <img
@@ -24,6 +29,23 @@
   </nav>
 </template>
 
-<script setup></script>
+<script setup>
+import { useStore } from "vuex";
 
-<style lang="scss" scoped></style>
+const store = useStore();
+
+function logout() {
+  store.commit("LOGOUT");
+}
+</script>
+
+<style scoped>
+.btn {
+  width: 100px;
+  height: 30px;
+  background-color: #c9ac8c;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: -10px;
+}
+</style>

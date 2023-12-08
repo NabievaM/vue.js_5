@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import axios from 'axios';
 import router from "../router";
-import { RT_HOME } from "../constants/routeNames";
+import { RT_HOME, RT_AUTH } from "../constants/routeNames";
 
 const url = import.meta.env.VITE_BASE_URL;
 
@@ -39,6 +39,12 @@ const store = createStore({
         SET_ADMIN: (state, payload) => {
             state.admin = payload;
             router.push({ name: RT_HOME });
+        },
+
+        LOGOUT: (state) => {
+            state.admin = {};
+            localStorage.removeItem("access_token");
+            router.push({ name: RT_AUTH });
         },
     }
 })
