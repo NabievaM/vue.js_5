@@ -2,36 +2,42 @@ import { createStore } from "vuex";
 import axios from 'axios';
 import router from "../router";
 import { RT_HOME, RT_AUTH } from "../constants/routeNames";
+import { errorToast, infoToast } from '../utils/toast';
 
 const url = import.meta.env.VITE_BASE_URL;
 
 const store = createStore({
     state: {
         admin: {},
-        author: [],
+        products: [],
     },
 
     getters: {
-        author: (state) => state.author,
+        products: (state) => state.products,
     },
 
     actions: {
         async auth({ commit }, payload) {
-            const res = await axios.post(url + "/admin/signin", payload);
-            if (!res.data?.access_token && res.status !== 200) {
-                return;
+            try {
+                const res = await axios.post(url + "/admin/signin", payload);
+                if (!res.data?.access_token && res.status !== 200) {
+                    return;
+                }
+                commit("SET_TOKEN", res.data.access_token);
+                commit("SET_ADMIN", res.data);
+            } catch (err) {
+                errorToast(err.message)
             }
-            commit("SET_TOKEN", res.data.access_token);
-            commit("SET_ADMIN", res.data);
+
         },
 
         async fetchAuthors({ commit }) {
-            const res = await axios.get(url + "/author/findAll");
-            if (!res.data?.author && res.status !== 200) {
-                console.log(res.data.author);
+            const res = await axios.get("https://dummyjson.com/products");
+            if (!res.data?.products && res.status !== 200) {
+                console.log(res.data.products);
                 return;
             }
-            commit("SET_AUTHORS", res.data.author);
+            commit("SET_AUTHORS", res.data.products);
         },
     },
 
@@ -45,13 +51,14 @@ const store = createStore({
             router.push({ name: RT_HOME });
         },
 
-        SET_AUTHORS: (state, payload) => (state.author = payload),
+        SET_AUTHORS: (state, payload) => (state.products = payload),
 
 
         LOGOUT: (state) => {
             state.admin = {};
             localStorage.removeItem("access_token");
             router.push({ name: RT_AUTH });
+            infoToast("You Log Out")
         },
     },
 });

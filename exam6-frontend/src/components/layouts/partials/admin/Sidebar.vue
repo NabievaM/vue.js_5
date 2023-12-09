@@ -6,6 +6,11 @@
       Admin Panel
     </h2>
     <router-link
+      to="/"
+      class="sidebar_item"
+      >Home</router-link
+    >
+    <router-link
       to="/admin/users"
       class="sidebar_item"
       >Users</router-link

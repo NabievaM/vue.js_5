@@ -30,9 +30,11 @@
 </template>
 
 <script setup>
+import { useToast } from "vue-toastification";
 import { useStore } from "vuex";
 
 const store = useStore();
+const toast = useToast();
 
 function logout() {
   store.commit("LOGOUT");
