@@ -11,7 +11,7 @@
     <div
       class="w-[1114px] h-[169px] rounded-xl bg-black2 absolute ml-[117px] p-[30px] text-center"
     >
-      <p class="text-gold text-3xl">Qidirish</p>
+      <p class="text-gold text-3xl">{{ t("search_name") }}</p>
 
       <div class="ml-[100px] mt-6 flex">
         <input
@@ -25,13 +25,13 @@
           @click="searchProducts"
           class="bg-persikoviy text-orange-950 px-6 rounded-lg ml-3"
         >
-          Izlash
+          {{ t("search_button") }}
         </button>
       </div>
     </div>
 
     <div class="w-full h-[100px] mt-[250px] text-center">
-      <p class="text-gold text-3xl">Asosiy kategoriyalar</p>
+      <p class="text-gold text-3xl">{{ t("main_category") }}</p>
     </div>
     <div class="w-[70%] h-[40px] px-[20px] flex mx-auto justify-around">
       <p class="text-white hover:text-gold text-xl">Temuriylar davri</p>
@@ -56,16 +56,22 @@
         </div>
       </div>
     </div>
+
+    <div v-for="kategory of category">
+      <pre class="text-white">{{ kategory }}</pre>
+    </div>
   </section>
 </template>
 
 <script setup>
-import Navbar from "../components/navbar.vue";
+import Navbar from "../components/Navbar.vue";
 import Input from "../components/base/base-input.vue";
 
 import { useHome } from "../composables";
+import { useI18n } from "vue-i18n";
+const { t, locale } = useI18n();
 
-const { products, searchProducts, searchWord } = useHome();
+const { products, searchProducts, searchWord, category } = useHome();
 </script>
 
 <style scoped></style>

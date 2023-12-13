@@ -10,10 +10,12 @@ const store = createStore({
     state: {
         admin: {},
         products: [],
+        category: {}
     },
 
     getters: {
         products: (state) => state.products,
+        category: (state) => state.category
     },
 
     actions: {
@@ -29,6 +31,15 @@ const store = createStore({
                 errorToast(err.message)
             }
 
+        },
+
+        async fetchCategory({ commit }) {
+            const res = await axios.get(url + "/category/findAll");
+            if (!res.data?.category && res.status !== 200) {
+                console.log(res.data.category);
+                return;
+            }
+            commit("SET_CATEGORY", res.data.category);
         },
 
         async fetchAuthors({ commit }) {
@@ -49,6 +60,10 @@ const store = createStore({
         SET_ADMIN: (state, payload) => {
             state.admin = payload;
             router.push({ name: RT_HOME });
+        },
+
+        SET_CATEGORY: (state, payload) => {
+            state.category = payload;
         },
 
         SET_AUTHORS: (state, payload) => (state.products = payload),

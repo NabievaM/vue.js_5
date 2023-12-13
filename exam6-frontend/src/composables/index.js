@@ -1,11 +1,27 @@
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export function useHome() {
     const store = useStore();
 
+    const singleProduct = ref({
+        title: '',
+        description: '',
+        image: '',
+        category: '',
+        price: null,
+    })
 
     const products = computed(() => store.getters.products);
+
+    const category = computed(() => store.getters.category)
+
+
+    function fetchSingleProduct(id) {
+        fetch(`https://dummyjson.com/products/${id}`)
+            .then(res => res.json())
+            .then(json => singleProduct.value = json)
+    }
 
     onMounted(async () => {
         await store.dispatch("fetchAuthors")
@@ -24,6 +40,9 @@ export function useHome() {
 
     return {
         products,
+        fetchSingleProduct,
+        singleProduct,
+        category
         // searchProducts, searchWord
     };
 }

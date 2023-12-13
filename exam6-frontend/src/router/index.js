@@ -8,6 +8,8 @@ import {
     MT_AUTH,
     RT_NOTFOUND,
     MT_NOTFOUND,
+    MT_PRODUCTBYID,
+    RT_PRODUCTBYID
 } from "../constants/routeNames";
 import { adminRoutes } from "./admin";
 
@@ -34,6 +36,14 @@ const router = createRouter({
             meta: {
                 layout: "Auth",
                 title: MT_AUTH,
+            }
+        },
+        {
+            path: '/product/:id',
+            name: RT_PRODUCTBYID,
+            component: () => import('../pages/ProductDetails.vue'),
+            meta: {
+                title: MT_PRODUCTBYID
             }
         },
         {
