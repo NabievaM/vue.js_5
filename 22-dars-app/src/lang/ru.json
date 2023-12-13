@@ -1,0 +1,17 @@
+{
+  "hello": "Privet Vue i i18n plugin",
+  "nav": {
+    "home": "Glavniy",
+    "about": "O nas",
+    "cart": "Korzinka",
+    "logout": "Vixod"
+  },
+  "login":{
+    "login":"Авторизация",
+    "login_username":"имя пользователя",
+    "username_placeholder":"Введите имя пользователя",
+    "password_placeholder":"Введите пароль",
+    "login_password":"Пароль",
+    "login_button":"Авторизоваться"
+  }
+}
