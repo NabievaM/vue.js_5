@@ -10,7 +10,20 @@
       v-for="product of products"
       @click="onProductSelected(product.id)"
     >
-      {{ product.title }}
+      <!-- /*Card*/ -->
+      <v-card
+        class="mx-auto mb-4"
+        max-width="344"
+      >
+        <v-card-title>{{ product.title }}</v-card-title>
+        <v-img
+          :src="product.images[0]"
+          height="200px"
+          cover
+        ></v-img>
+
+        <router-link to="/"> Shop now </router-link>
+      </v-card>
     </div>
   </div>
 </template>
